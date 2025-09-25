@@ -1,7 +1,13 @@
+const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
 
-const server = http.createServer();
+const app = express();
+const server = http.createServer(app);
+
+app.get('/', (req, res) => {
+  res.send('BlockBunny backend is running');
+});
 
 const io = new Server(server, {
   cors: {
