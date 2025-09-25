@@ -13,6 +13,7 @@ app.get('/', (req, res) => {
 });
 
 const io = new Server(server, {
+  path: '/socket', // Match frontend socket path
   cors: {
     origin: '*',
     methods: ['GET', 'POST'],
@@ -43,3 +44,5 @@ const PORT = process.env.PORT || 3001;
 server.listen(PORT, () => {
   console.log(`Socket server running on port ${PORT}`);
 });
+
+module.exports = { io };
